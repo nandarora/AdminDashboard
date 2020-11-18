@@ -1,0 +1,2 @@
+const FETCH_SUPERUSER = 'FETCH_SUPERUSER';
+export default FETCH_SUPERUSER;

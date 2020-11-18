@@ -6,9 +6,11 @@ import "./i18n";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <BrowserRouter basename="/demo/stellar-react-free/template/demo_1/preview">
+  <React.StrictMode>
+  <BrowserRouter basename="/rate-my-fitness">
     <App />
   </BrowserRouter>
+  </React.StrictMode>
 , document.getElementById('root'));
 
 serviceWorker.unregister();

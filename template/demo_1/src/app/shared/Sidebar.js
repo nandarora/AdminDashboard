@@ -3,17 +3,22 @@ import { Link, withRouter } from "react-router-dom";
 import { Collapse } from "react-bootstrap";
 import { Trans } from "react-i18next";
 
-class Sidebar extends Component {
-  state = {};
 
-  toggleMenuState(menuState) {
+class Sidebar extends Component {
+  state = {
+    userImage: ""
+  };
+
+  toggleMenuState=(menuState)=> {
     if (this.state[menuState]) {
       this.setState({ [menuState]: false });
     } else if (Object.keys(this.state).length === 0) {
       this.setState({ [menuState]: true });
     } else {
       Object.keys(this.state).forEach(i => {
-        this.setState({ [i]: false });
+        this.setState({ [i]: false ,
+          userImage: "face8"
+        });
       });
       this.setState({ [menuState]: true });
     }
@@ -29,6 +34,7 @@ class Sidebar extends Component {
     document.querySelector("#sidebar").classList.remove("active");
     Object.keys(this.state).forEach(i => {
       this.setState({ [i]: false });
+      this.setState({ userImage: "face8"})
     });
 
     const dropdownPaths = [
@@ -48,12 +54,45 @@ class Sidebar extends Component {
 
     dropdownPaths.forEach(obj => {
       if (this.isPathActive(obj.path)) {
-        this.setState({ [obj.state]: true });
+        this.setState({ 
+          [obj.state]: true,
+          userImage: "face8"
+        });
+        
       }
     });
   }
 
   render() {
+    let image={
+      "face8": require("../../assets/images/faces/face8.jpg"),
+      "face7": require("../../assets/images/faces/face7.jpg"),
+      "face6": require("../../assets/images/faces/face6.jpg"),
+      "face5": require("../../assets/images/faces/face5.jpg"),
+      "face4": require("../../assets/images/faces/face4.jpg"),
+      "face3": require("../../assets/images/faces/face3.jpg"),
+      "face2": require("../../assets/images/faces/face2.jpg"),
+      "face1": require("../../assets/images/faces/face1.jpg"),
+      
+    }
+    var user="";
+    
+    switch (this.state.userImage) {
+      case "face8":
+        console.log("Entered face8");
+        user="face8"
+        break;
+      case "face7":
+        user="face7"
+          break;
+    
+      default:
+        
+        
+    }
+    console.log(user);
+    console.log(this.props.props.user.items[0].name);
+    console.log(this.props.props.user.items[0].image);
     return (
       <nav className="sidebar sidebar-offcanvas" id="sidebar">
         <ul className="nav">
@@ -77,15 +116,15 @@ class Sidebar extends Component {
               <div className="profile-image">
                 <img
                   className="img-xs rounded-circle"
-                  src={require("../../assets/images/faces/face8.jpg")}
+                  src={image[this.props.props.user.items[0].image]}
                   alt="profile"
                 />
                 <div className="dot-indicator bg-success"></div>
               </div>
               <div className="text-wrapper">
-                <p className="profile-name">Henry Klein</p>
+                <p className="profile-name"></p>
                 <p className="designation">
-                  <Trans>Administrator</Trans>
+                  <Trans>{this.props.props.user.items[0].name}</Trans>
                 </p>
               </div>
               <div className="icon-container">
@@ -101,10 +140,10 @@ class Sidebar extends Component {
           </li>
           <li
             className={
-              this.isPathActive("/dashboard") ? "nav-item active" : "nav-item"
+              this.isPathActive(this.props.props.url+"/dashboard") ? "nav-item active" : "nav-item"
             }
           >
-            <Link className="nav-link" to="/dashboard">
+            <Link className="nav-link" to={this.props.props.url+"/dashboard"}>
               <span className="menu-title">
                 <Trans>Dashboard</Trans>
               </span>
@@ -113,7 +152,7 @@ class Sidebar extends Component {
           </li>
           <li
             className={
-              this.isPathActive("/basic-ui") ? "nav-item active" : "nav-item"
+              this.isPathActive(this.props.props.url+"/basic-ui") ? "nav-item active" : "nav-item"
             }
           >
             <div
@@ -137,11 +176,11 @@ class Sidebar extends Component {
                     {" "}
                     <Link
                       className={
-                        this.isPathActive("/basic-ui/buttons")
+                        this.isPathActive(this.props.props.url+"/basic-ui/buttons")
                           ? "nav-link active"
                           : "nav-link"
                       }
-                      to="/basic-ui/buttons"
+                      to={this.props.props.url+"/basic-ui/buttons"}
                     >
                       <Trans>Buttons</Trans>
                     </Link>
@@ -150,11 +189,11 @@ class Sidebar extends Component {
                     {" "}
                     <Link
                       className={
-                        this.isPathActive("/basic-ui/dropdowns")
+                        this.isPathActive(this.props.props.url+"/basic-ui/dropdowns")
                           ? "nav-link active"
                           : "nav-link"
                       }
-                      to="/basic-ui/dropdowns"
+                      to={this.props.props.url+"/basic-ui/dropdowns"}
                     >
                       <Trans>Dropdowns</Trans>
                     </Link>
@@ -163,11 +202,11 @@ class Sidebar extends Component {
                     {" "}
                     <Link
                       className={
-                        this.isPathActive("/basic-ui/typography")
+                        this.isPathActive(this.props.props.url+"/basic-ui/typography")
                           ? "nav-link active"
                           : "nav-link"
                       }
-                      to="/basic-ui/typography"
+                      to={this.props.props.url+"/basic-ui/typography"}
                     >
                       <Trans>Typography</Trans>
                     </Link>
@@ -178,7 +217,7 @@ class Sidebar extends Component {
           </li>
           <li
             className={
-              this.isPathActive("/form-elements")
+              this.isPathActive(this.props.props.url+"/form-elements")
                 ? "nav-item active"
                 : "nav-item"
             }
@@ -204,11 +243,11 @@ class Sidebar extends Component {
                     {" "}
                     <Link
                       className={
-                        this.isPathActive("/form-elements/basic-elements")
+                        this.isPathActive(this.props.props.url+"/form-elements/basic-elements")
                           ? "nav-link active"
                           : "nav-link"
                       }
-                      to="/form-elements/basic-elements"
+                      to={this.props.props.url+"/form-elements/basic-elements"}
                     >
                       <Trans>Basic Elements</Trans>
                     </Link>
@@ -219,7 +258,7 @@ class Sidebar extends Component {
           </li>
           <li
             className={
-              this.isPathActive("/tables") ? "nav-item active" : "nav-item"
+              this.isPathActive(this.props.props.url+"/tables") ? "nav-item active" : "nav-item"
             }
           >
             <div
@@ -243,11 +282,11 @@ class Sidebar extends Component {
                     {" "}
                     <Link
                       className={
-                        this.isPathActive("/tables/basic-table")
+                        this.isPathActive(this.props.props.url+"/tables/basic-table")
                           ? "nav-link active"
                           : "nav-link"
                       }
-                      to="/tables/basic-table"
+                      to={this.props.props.url+"/tables/basic-table"}
                     >
                       <Trans>Basic Table</Trans>
                     </Link>
@@ -258,7 +297,7 @@ class Sidebar extends Component {
           </li>
           <li
             className={
-              this.isPathActive("/icons") ? "nav-item active" : "nav-item"
+              this.isPathActive(this.props.props.url+"/icons") ? "nav-item active" : "nav-item"
             }
           >
             <div
@@ -280,11 +319,11 @@ class Sidebar extends Component {
                     {" "}
                     <Link
                       className={
-                        this.isPathActive("/icons/mdi")
+                        this.isPathActive(this.props.props.url+"/icons/mdi")
                           ? "nav-link active"
                           : "nav-link"
                       }
-                      to="/icons/mdi"
+                      to={this.props.props.url+"/icons/mdi"}
                     >
                       Material
                     </Link>
@@ -295,7 +334,7 @@ class Sidebar extends Component {
           </li>
           <li
             className={
-              this.isPathActive("/charts") ? "nav-item active" : "nav-item"
+              this.isPathActive(this.props.props.url+"/charts") ? "nav-item active" : "nav-item"
             }
           >
             <div
@@ -319,11 +358,11 @@ class Sidebar extends Component {
                     {" "}
                     <Link
                       className={
-                        this.isPathActive("/charts/chart-js")
+                        this.isPathActive(this.props.props.url+"/charts/chart-js")
                           ? "nav-link active"
                           : "nav-link"
                       }
-                      to="/charts/chart-js"
+                      to={this.props.props.url+"/charts/chart-js"}
                     >
                       Chart Js
                     </Link>
@@ -339,7 +378,7 @@ class Sidebar extends Component {
           </li>
           <li
             className={
-              this.isPathActive("/user-pages") ? "nav-item active" : "nav-item"
+              this.isPathActive(this.props.props.url+"/user-pages") ? "nav-item active" : "nav-item"
             }
           >
             <div
@@ -363,7 +402,7 @@ class Sidebar extends Component {
                     {" "}
                     <Link
                       className={
-                        this.isPathActive("/user-pages/login-1")
+                        this.isPathActive(this.props.props.url+"/user-pages/login-1")
                           ? "nav-link active"
                           : "nav-link"
                       }
@@ -380,7 +419,7 @@ class Sidebar extends Component {
                           ? "nav-link active"
                           : "nav-link"
                       }
-                      to="/user-pages/register-1"
+                      to={this.props.props.url+"/user-pages/register-1"}
                     >
                       <Trans>Register</Trans>
                     </Link>
@@ -391,7 +430,7 @@ class Sidebar extends Component {
           </li>
           <li
             className={
-              this.isPathActive("/error-pages") ? "nav-item active" : "nav-item"
+              this.isPathActive(this.props.props.url+"/error-pages") ? "nav-item active" : "nav-item"
             }
           >
             <div
@@ -415,11 +454,11 @@ class Sidebar extends Component {
                     {" "}
                     <Link
                       className={
-                        this.isPathActive("/error-pages/error-404")
+                        this.isPathActive(this.props.props.url+"/error-pages/error-404")
                           ? "nav-link active"
                           : "nav-link"
                       }
-                      to="/error-pages/error-404"
+                      to={this.props.props.url+"/error-pages/error-404"}
                     >
                       404
                     </Link>
@@ -428,11 +467,11 @@ class Sidebar extends Component {
                     {" "}
                     <Link
                       className={
-                        this.isPathActive("/error-pages/error-500")
+                        this.isPathActive(this.props.props.url+"/error-pages/error-500")
                           ? "nav-link active"
                           : "nav-link"
                       }
-                      to="/error-pages/error-500"
+                      to={this.props.props.url+"/error-pages/error-500"}
                     >
                       500
                     </Link>

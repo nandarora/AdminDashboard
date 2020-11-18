@@ -136,10 +136,10 @@ export class Typography extends Component {
                 <div className="row">
                   <div className="col-md-6">
                     <address>
-                      <p className="font-weight-semibold">Stellar imc</p>
-                      <p> 695 lsom Ave, </p>
-                      <p> Suite 00 </p>
-                      <p> San Francisco, CA 94107 </p>
+                      <p className="font-weight-semibold">Rate My Fitness</p>
+                      <p> Street Address </p>
+                      <p> City</p>
+                      <p> State, Postal Code </p>
                     </address>
                   </div>
                   <div className="col-md-6">
@@ -147,7 +147,7 @@ export class Typography extends Component {
                       <p className="font-weight-semibold"> E-mail </p>
                       <p className="mb-2"> johndoe@examplemeail.com </p>
                       <p className="font-weight-semibold"> Web Address </p>
-                      <p> www.stellar-admin.com </p>
+                      <p> Website-Url </p>
                     </address>
                   </div>
                 </div>
@@ -265,7 +265,7 @@ export class Typography extends Component {
                   <li>Consectetur adipiscing elit</li>
                   <li>Integer molestie lorem at massa</li>
                   <li>Facilisis in pretium nisl aliquet</li>
-                  <li>Nulla volutpat aliquam velit></li>
+                  <li>Nulla volutpat aliquam velit</li>
                 </ol>
               </div>
             </div>
@@ -326,7 +326,7 @@ export class Typography extends Component {
                   <li>Consectetur adipiscing elit</li>
                   <li>Integer molestie lorem at massa</li>
                   <li>Facilisis in pretium nisl aliquet</li>
-                  <li>Nulla volutpat aliquam velit></li>
+                  <li>Nulla volutpat aliquam velit</li>
                 </ul>
               </div>
             </div>
@@ -341,7 +341,7 @@ export class Typography extends Component {
                   <li>Consectetur adipiscing elit</li>
                   <li>Integer molestie lorem at massa</li>
                   <li>Facilisis in pretium nisl aliquet</li>
-                  <li>Nulla volutpat aliquam velit></li>
+                  <li>Nulla volutpat aliquam velit</li>
                 </ul>
               </div>
             </div>
@@ -356,7 +356,7 @@ export class Typography extends Component {
                   <li>Consectetur adipiscing elit</li>
                   <li>Integer molestie lorem at massa</li>
                   <li>Facilisis in pretium nisl aliquet</li>
-                  <li>Nulla volutpat aliquam velit></li>
+                  <li>Nulla volutpat aliquam velit</li>
                 </ul>
               </div>
             </div>

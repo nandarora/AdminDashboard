@@ -128,15 +128,12 @@ export class Dashboard extends Component {
     document.querySelector('.proBanner').classList.toggle("hide");
   }
   render() {
+    console.log(this.props);
     return (
       <div>
         <div className="proBanner">
           <div>
-            <span className="d-flex align-items-center purchase-popup">
-              <p className="m-0">Get tons of UI components, Plugins, multiple layouts, 20+ sample pages, and more!</p>
-              <a href="https://www.bootstrapdash.com/product/stellar-admin-template-react/?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" rel="noopener noreferrer" target="_blank" className="btn btn-sm btn-info ml-auto">Check Pro Version</a>
-              <i className="typcn typcn-delete-outline bannerClose" onClick={this.toggleProBanner}></i>
-            </span>
+            
           </div>
         </div>
         <div className="row">

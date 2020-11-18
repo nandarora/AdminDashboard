@@ -7,14 +7,14 @@ class Footer extends Component {
       <footer className="footer">
         <div className="d-sm-flex justify-content-center justify-content-sm-between">
           <div className="text-muted text-center text-sm-left"><Trans>
-            Copyright © 2019 Stellar. All rights reserved.
+            Rate My Fitness |
           </Trans> 
             <div className="d-sm-inline-block">
-              <a href="!#" onClick={ evt=>evt.preventDefault() } className="pl-1"><Trans>
-                Terms of use
+              <a href="https://sunverasoftware.com/"  className="pl-1"><Trans>
+                Sunvera
               </Trans></a> |
-              <a href="!#" onClick={ evt=>evt.preventDefault() } className="px-1"><Trans>
-                Privacy Policy
+              <a href="https://sunverasoftware.com/"  className="px-1"><Trans>
+                Sunvera
               </Trans></a>
             </div>
           </div>
